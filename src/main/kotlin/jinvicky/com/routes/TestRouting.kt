@@ -5,7 +5,7 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import jinvicky.com.model.vo.Banner
+import jinvicky.com.model.Banner
 import java.io.File
 
 fun Route.testRoutes() {

@@ -3,6 +3,8 @@ val kotlin_version: String by project
 val logback_version: String by project
 val mysql_version: String by project
 val koin_version: String by project
+val hikaricp_version: String by project
+val ehcache_version: String by project
 
 plugins {
     kotlin("jvm") version "1.9.23"
@@ -37,7 +39,11 @@ dependencies {
     /** mysql **/
     implementation ("mysql:mysql-connector-java:$mysql_version")
     /** koin **/
+    implementation("io.insert-koin:koin-core:$koin_version")
     implementation("io.insert-koin:koin-ktor:$koin_version")
+
+    implementation("com.zaxxer:HikariCP:$hikaricp_version")
+    implementation("org.ehcache:ehcache:$ehcache_version")
 
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
