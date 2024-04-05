@@ -5,6 +5,7 @@ val mysql_version: String by project
 val koin_version: String by project
 val hikaricp_version: String by project
 val ehcache_version: String by project
+val exposed_version: String by project
 
 plugins {
     kotlin("jvm") version "1.9.23"
@@ -44,6 +45,9 @@ dependencies {
 
     implementation("com.zaxxer:HikariCP:$hikaricp_version")
     implementation("org.ehcache:ehcache:$ehcache_version")
+
+    /** exposed - java-time **/
+    implementation ("org.jetbrains.exposed:exposed-java-time:$exposed_version")
 
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")

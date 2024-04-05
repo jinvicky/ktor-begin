@@ -16,7 +16,7 @@ import jinvicky.com.config.appModule
 import jinvicky.com.config.configureRouting
 import jinvicky.com.config.configureSerialization
 import jinvicky.com.logger.configureMonitoring
-
+import kotlinx.coroutines.runBlocking
 
 fun main() {
     startKoin {
@@ -32,6 +32,12 @@ fun main() {
         configure = { Application::configure  }
     ).start(wait = true)
 
+
+    /**
+     * cache test....
+     */
+
+
 }
 
 fun Application.module() {
@@ -42,7 +48,8 @@ fun Application.module() {
 }
 
 fun Application.configure() {
-    install(ContentNegotiation) {
-        json()
-    }
+//    install(ContentNegotiation) {
+//        json()
+//
+//    }
 }
