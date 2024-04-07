@@ -28,6 +28,7 @@ repositories {
 }
 
 dependencies {
+    /** logging **/
     implementation("io.ktor:ktor-server-call-logging-jvm")
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
@@ -48,6 +49,9 @@ dependencies {
 
     /** exposed - java-time **/
     implementation ("org.jetbrains.exposed:exposed-java-time:$exposed_version")
+
+    /** exception handler - server-status-pages **/
+    implementation ("io.ktor:ktor-server-status-pages:$ktor_version")
 
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")

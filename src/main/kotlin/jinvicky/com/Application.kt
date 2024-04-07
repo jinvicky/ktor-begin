@@ -1,22 +1,24 @@
 package jinvicky.com
 
+import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.server.plugins.*
 
 import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.plugins.statuspages.*
+import io.ktor.server.response.*
+import jinvicky.com.config.*
 
 import org.koin.ktor.plugin.Koin
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
-import jinvicky.com.config.DatabaseConfigure
-import jinvicky.com.config.appModule
-import jinvicky.com.config.configureRouting
-import jinvicky.com.config.configureSerialization
 import jinvicky.com.logger.configureMonitoring
 import kotlinx.coroutines.runBlocking
+import org.slf4j.LoggerFactory
 
 fun main() {
     startKoin {
@@ -29,27 +31,22 @@ fun main() {
         port = 8085,
         host = "0.0.0.0",
         module = Application::module,
-        configure = { Application::configure  }
+//        configure = { Application.configure}
     ).start(wait = true)
-
-
-    /**
-     * cache test....
-     */
-
-
 }
 
 fun Application.module() {
-    configureMonitoring()
+    configureMonitoring() // 로깅
     configureSerialization()
 
-    configureRouting()
+    configureRouting() // 라우팅
+    configureException() // 예외처리
 }
 
 fun Application.configure() {
-//    install(ContentNegotiation) {
-//        json()
-//
-//    }
+    install(ContentNegotiation) {
+        json()
+
+    }
 }
+
