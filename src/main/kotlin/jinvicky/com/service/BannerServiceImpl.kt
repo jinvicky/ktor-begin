@@ -31,8 +31,8 @@ class BannerServiceImpl: BannerService {
         }
     }
 
+
     override suspend fun bannerInsert(banner: ExposedBanner): Int {
-        println("lets ktor! . BannerInsert")
         return dbQuery {
             Banners.insert {
                 it[id] = banner.id

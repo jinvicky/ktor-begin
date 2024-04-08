@@ -4,6 +4,7 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import jinvicky.com.model.Banner
 import jinvicky.com.model.ExposedBanner
 import jinvicky.com.service.BannerService
 import org.koin.ktor.ext.inject
@@ -20,9 +21,9 @@ fun Route.bannerRoutes() {
 
         get("/{id}") {
             val id = call.parameters["id"]?.toInt() ?: 0
-            println("banner.... $id")
+
             bannerService.bannerDetail(id).let {
-                call.respond(it ?: "Not Found")
+                call.respond(it ?: throw Exception("Not Found"))
             }
         }
 
